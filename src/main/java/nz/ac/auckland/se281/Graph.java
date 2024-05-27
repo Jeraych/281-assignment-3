@@ -39,21 +39,23 @@ public class Graph {
   public List<Country> breathFirstTraversal(Country root, Country destination) {
     Set<Country> visited = new HashSet<>();
     Queue<Country> queue = new LinkedList<>();
-    Map<Country, Country> parentMap = new HashMap<>();
+    List<ParentMap> parentMap = new ArrayList<>();
     List<Country> path = new ArrayList<>();
+    ParentMap parent;
     queue.add(root);
     visited.add(root);
     while (!queue.isEmpty()) {
         Country node = queue.poll();
         for (Country n : adjCountries.get(node)) {
-          parentMap.put(node, n);
+          parent = new ParentMap(node, n);
+          parentMap.add(parent);
           if (n.equals(destination)) {
             path.add(n);
             while (!node.equals(root)) {
-              for (Country i : parentMap.keySet()) {
-                if (i.equals(node)) {
+              for (ParentMap i : parentMap) {
+                if (i.getChild().equals(node)) {
                   path.add(node);
-                  n = node;
+                  node = i.getParent();
                   break;
                 }
               }
