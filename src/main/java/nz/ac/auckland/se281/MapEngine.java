@@ -66,7 +66,7 @@ public class MapEngine {
         country = graph.getCountry(input);
       } catch (InvalidCountry e) {
         input = Utils.capitalizeFirstLetterOfEachWord(input);
-        MessageCli.INVALID_COUNTRY.printMessage();
+        MessageCli.INVALID_COUNTRY.printMessage(input);
         continue;
       }
       invalidInput = false;
