@@ -93,5 +93,8 @@ public class MapEngine {
       MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
       return;
     }
+
+    countryList = graph.breathFirstTraversal(source);
+    MessageCli.ROUTE_INFO.printMessage(countryList.toString());
   }
 }
