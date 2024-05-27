@@ -94,7 +94,7 @@ public class MapEngine {
       return;
     }
 
-    countryList = graph.breathFirstTraversal(source);
+    countryList = graph.breathFirstTraversal(source, destination);
     MessageCli.ROUTE_INFO.printMessage(countryList.toString());
   }
 }
