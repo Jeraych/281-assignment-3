@@ -84,6 +84,7 @@ public class MapEngine {
   public void showRoute() {
     Country source;
     Country destination;
+    List<String> continents;
     askInput(MessageCli.INSERT_SOURCE);
     source = country;
     askInput(MessageCli.INSERT_DESTINATION);
@@ -96,5 +97,12 @@ public class MapEngine {
 
     countryList = graph.breathFirstTraversal(source, destination);
     MessageCli.ROUTE_INFO.printMessage(countryList.toString());
+    continents = new ArrayList<>();
+    for (Country i : countryList) {
+      if (!continents.contains(i.getContinent())) {
+        continents.add(i.getContinent());
+      }
+    }
+    MessageCli.CONTINENT_INFO.printMessage(continents.toString());
   }
 }
