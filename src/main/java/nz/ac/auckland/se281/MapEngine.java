@@ -54,13 +54,11 @@ public class MapEngine {
     }
   }
 
-  /** this method is invoked when the user run the command info-country. */
-  public void showInfoCountry() {
-    // add code here
+  public void askInput(MessageCli message) {
     // ask for country and check if it exists repeatively
     invalidInput = true;
     while (invalidInput) {
-      MessageCli.INSERT_COUNTRY.printMessage();
+      message.printMessage();
       input = Utils.scanner.nextLine();
       try {
         country = graph.getCountry(input);
@@ -71,11 +69,29 @@ public class MapEngine {
       }
       invalidInput = false;
     }
+  }
+
+  /** this method is invoked when the user run the command info-country. */
+  public void showInfoCountry() {
+    // add code here
+    askInput(MessageCli.INSERT_COUNTRY);
 
     MessageCli.COUNTRY_INFO.printMessage(
         country.getName(), country.getContinent(), Integer.toString(country.getTax()));
   }
 
   /** this method is invoked when the user run the command route. */
-  public void showRoute() {}
+  public void showRoute() {
+    Country source;
+    Country destination;
+    askInput(MessageCli.INSERT_SOURCE);
+    source = country;
+    askInput(MessageCli.INSERT_DESTINATION);
+    destination = country;
+
+    if (source.equals(destination)) {
+      MessageCli.NO_CROSSBORDER_TRAVEL.printMessage();
+      return;
+    }
+  }
 }
