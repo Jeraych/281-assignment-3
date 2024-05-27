@@ -33,6 +33,7 @@ public class Country {
 
   @Override
   public boolean equals(Object obj) {
+    // check whether two countries are equal by their name (name must be unique)
     if (this == obj) return true;
     if (obj == null) return false;
     if (getClass() != obj.getClass()) return false;

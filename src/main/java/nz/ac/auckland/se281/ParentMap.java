@@ -16,6 +16,4 @@ public class ParentMap {
   public Country getChild() {
     return child;
   }
-
-  
 }

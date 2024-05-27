@@ -54,6 +54,11 @@ public class MapEngine {
     }
   }
 
+  /**
+   * Use Utils scanner to ask for users input of country.
+   *
+   * @param message a specific MessageCli that is used to display error message.
+   */
   public void askInput(MessageCli message) {
     // ask for country and check if it exists repeatively
     invalidInput = true;
@@ -63,8 +68,7 @@ public class MapEngine {
       try {
         country = graph.getCountry(input);
       } catch (InvalidCountry e) {
-        input = Utils.capitalizeFirstLetterOfEachWord(input);
-        MessageCli.INVALID_COUNTRY.printMessage(input);
+        MessageCli.INVALID_COUNTRY.printMessage(Utils.capitalizeFirstLetterOfEachWord(input));
         continue;
       }
       invalidInput = false;
@@ -97,7 +101,7 @@ public class MapEngine {
     }
 
     // calculate best path
-    countryList = graph.breathFirstTraversal(source, destination);
+    countryList = graph.findBreathFirstTraversalPath(source, destination);
     MessageCli.ROUTE_INFO.printMessage(countryList.toString());
 
     // calculate continents travelled
