@@ -85,6 +85,7 @@ public class MapEngine {
     Country source;
     Country destination;
     List<String> continents;
+    int tax = 0;
     askInput(MessageCli.INSERT_SOURCE);
     source = country;
     askInput(MessageCli.INSERT_DESTINATION);
@@ -95,8 +96,11 @@ public class MapEngine {
       return;
     }
 
+    // calculate best path
     countryList = graph.breathFirstTraversal(source, destination);
     MessageCli.ROUTE_INFO.printMessage(countryList.toString());
+
+    // calculate continents travelled
     continents = new ArrayList<>();
     for (Country i : countryList) {
       if (!continents.contains(i.getContinent())) {
@@ -104,5 +108,12 @@ public class MapEngine {
       }
     }
     MessageCli.CONTINENT_INFO.printMessage(continents.toString());
+
+    // calculate taxes needed
+    for (Country i : countryList) {
+      tax += i.getTax();
+    }
+    tax -= source.getTax();
+    MessageCli.TAX_INFO.printMessage(Integer.toString(tax));
   }
 }
