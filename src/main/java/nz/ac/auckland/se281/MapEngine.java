@@ -57,7 +57,23 @@ public class MapEngine {
   /** this method is invoked when the user run the command info-country. */
   public void showInfoCountry() {
     // add code here
+    // ask for country and check if it exists repeatively
+    invalidInput = true;
+    while (invalidInput) {
+      MessageCli.INSERT_COUNTRY.printMessage();
+      input = Utils.scanner.nextLine();
+      try {
+        country = graph.getCountry(input);
+      } catch (InvalidCountry e) {
+        input = Utils.capitalizeFirstLetterOfEachWord(input);
+        MessageCli.INVALID_COUNTRY.printMessage();
+        continue;
+      }
+      invalidInput = false;
+    }
 
+    MessageCli.COUNTRY_INFO.printMessage(
+        country.getName(), country.getContinent(), Integer.toString(country.getTax()));
   }
 
   /** this method is invoked when the user run the command route. */
