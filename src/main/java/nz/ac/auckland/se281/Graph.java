@@ -27,7 +27,8 @@ public class Graph {
   }
 
   /**
-   * Gets the country requested.
+   * Gets the country requested that has name, continenet and tax. Throws exception when requesting
+   * country name that is not in the list.
    *
    * @param name a string that is the name of the country needed.
    * @return the country requested.
