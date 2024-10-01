@@ -17,3 +17,14 @@ What you need to implement for A3 is the code to load the map into a graph and p
 Additionally, you can notice that in the Risk map, each country has an associated number. In the Risk game, these numbers are used for reinforcement bonuses. In this assignment, we are using those numbers to specify the taxes that need to be paid to cross the border. For example, the total taxes to pay from Congo to Brazil are: 5 (for North Africa) and 2 (for Brazil), totaling 7 NZD. We don’t need to pay the 1 NZD for Congo because we start from there.
 
 This assignment simulates a real case scenario where a company offering international delivery wants to implement software to find the optimal routing across the world. The map would be more complex, but they will definitely use a Graph data structure.
+
+# The Commands
+Before proceeding with the tasks, read the code provided to you and start to familiarise yourself with the command-line interface.
+
+To run the application in VS Code in an interactive mode, run the Main class using the Maven wrapper through VS Code’s built-in terminal. If the terminal window is not open, you can open it by clicking on the Terminal menu, then New Terminal. Then type the following command:
+
+./mvnw clean compile exec:java@run for Unix/Mac OS or .\mvnw.cmd clean compile exec:java@run for Windows
+
+To run test cases:
+
+./mvnw clean compile test for Unix/Mac OS or .\mvnw.cmd clean compile test for Windows
